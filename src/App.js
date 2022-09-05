@@ -1,7 +1,11 @@
 
 import {Routes, Route} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 import RegisterPage from './pages/Register';
 import LoginPage from './pages/Login';
+import HomePage from './pages/Home';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
@@ -9,9 +13,11 @@ const App = () => {
   return (
     <div>
       {/* Nav may be */}
+      <ToastContainer position='top-center' />
       <Routes>
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/login' element={<LoginPage />} />
+        <Route path='/' element={<HomePage />} />
       </Routes>
     </div>
   );

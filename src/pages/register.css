@@ -53,11 +53,12 @@
     border: none;
     padding: 8px 20px;
     display: block;
-    background-color: blue;
+    background-color: #a7bcff;
     color: #fff;
     cursor: pointer;
 }
 
 .para {
     margin-top: 10px;
+    font-size: 12px;
 }
