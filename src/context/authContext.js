@@ -18,7 +18,7 @@ const authReducer = (state=initState, action) => {
             return {...state, user: action.payload};
         case 'LOGOUT_SUCCESS':
             // remove the user
-            break;
+            return {...state, user: null};
         case 'INITIAL_AUTH_CHECK_SUCCESS':
             return {...state, authStateLoading: false, user: action.payload};
         case 'INITIAL_AUTH_CHECK_FAIL':

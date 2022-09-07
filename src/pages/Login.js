@@ -2,13 +2,13 @@ import {useContext} from 'react';
 import {AuthContext} from '../context/authContext';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../config/firebase';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, Navigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import './register.css';
 
 const LoginPage = () => {
 
-    const {dispatch} = useContext(AuthContext);
+    const {state: {user}, dispatch} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -35,6 +35,8 @@ const LoginPage = () => {
     }
 
     return (
+        user ? (<Navigate to='/' />) : (
+
         <div className="formContainer">
             <div className="formWrapper">
                 <span className='brand'>RS chat</span>
@@ -50,6 +52,7 @@ const LoginPage = () => {
                 <p className='para'>don't have an acount ? <Link to='/register'>Sign Up</Link></p>
             </div>
         </div>
+        )
     );
 }
 

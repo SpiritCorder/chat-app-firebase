@@ -1,19 +1,18 @@
 import {useContext} from 'react';
 import {AuthContext} from '../context/authContext';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link, Navigate} from 'react-router-dom';
 import {createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
 import {ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage';
 import { doc, setDoc } from 'firebase/firestore';
 import {auth} from '../config/firebase';
 import {storage} from '../config/firebase';
 import {db} from '../config/firebase';
-import {Link} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import './register.css';
 
 const RegisterPage = () => {
 
-    const {dispatch} = useContext(AuthContext);
+    const {state: {user}, dispatch} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -95,6 +94,7 @@ const RegisterPage = () => {
     }
 
     return (
+        user ? (<Navigate to='/' />) : (
         <div className="formContainer">
             <div className="formWrapper">
                 <span className='brand'>RS chat</span>
@@ -110,6 +110,7 @@ const RegisterPage = () => {
                 <p className='para'>already have an acount ? <Link to='/login'>Log In</Link></p>
             </div>
         </div>
+        )
     );
 }
 
